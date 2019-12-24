@@ -8,7 +8,7 @@ export default class SelectedPerson extends React.Component {
   render() {
     const { selectedPerson } = this.props;
     return (
-      <Scoped postcss={styles}>
+      <Scoped css={styles}>
         <div className="selectedPerson">
           {selectedPerson !== undefined ? (
             <div>

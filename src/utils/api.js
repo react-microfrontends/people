@@ -1,4 +1,4 @@
-import fetchWithCache from "@react-mf/api";
+import { fetchWithCache } from "@react-mf/api";
 
 export function getPeople(pageNum = 1) {
   return fetchWithCache(`people/?page=${pageNum}`);

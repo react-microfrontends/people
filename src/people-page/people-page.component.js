@@ -7,14 +7,16 @@ import PeopleList from "../people-list/people-list.component.js";
 import SelectedPerson from "./selected-person/selected-person.component.js";
 import { useCss } from "kremling";
 
+const initialState = {
+  pageNum: 1,
+  nextPage: true,
+  loadingPeople: false,
+  selectedPerson: undefined,
+  people: []
+};
+
 export default function PeoplePage(props) {
-  const [state, dispatch] = React.useReducer(reducer, {
-    pageNum: 1,
-    nextPage: true,
-    loadingPeople: false,
-    selectedPerson: undefined,
-    people: []
-  });
+  const [state, dispatch] = React.useReducer(reducer, initialState);
 
   const { nextPage, loadingPeople, people, selectedPerson, pageNum } = state;
   const scope = useCss(styles);
@@ -94,4 +96,18 @@ export default function PeoplePage(props) {
   }
 }
 
-function reducer() {}
+function reducer(state = initialState, action) {
+  switch (action.type) {
+    case "loadingPeople":
+      return { ...state, loadingPeople: true };
+    case "newPeople":
+      return {
+        ...state,
+        people: state.people.concat(action.results.results),
+        nextPage: Boolean(action.results.nextPage),
+        loadingPeople: false
+      };
+    default:
+      throw Error(`Unknown action type '${action.type}'`);
+  }
+}
