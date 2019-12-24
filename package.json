@@ -1,0 +1,60 @@
+{
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack --mode=production",
+    "analyze": "webpack --mode=production --env.analyze=true",
+    "lint": "eslint src",
+    "prettier": "prettier --write './**'",
+    "test": "jest --passWithNoTests",
+    "watch-tests": "jest --watch",
+    "coverage": "jest --coverage"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && concurrently yarn:test yarn:lint"
+    }
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.5",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-proposal-decorators": "^7.7.4",
+    "@babel/preset-env": "^7.7.6",
+    "@babel/preset-react": "^7.7.4",
+    "@testing-library/react": "^9.4.0",
+    "@types/jest": "^24.0.23",
+    "autoprefixer": "^9.7.3",
+    "babel-eslint": "^11.0.0-beta.2",
+    "babel-jest": "^24.9.0",
+    "babel-loader": "^8.0.6",
+    "concurrently": "^5.0.1",
+    "css-loader": "^3.3.2",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-config-react-important-stuff": "^2.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "husky": "^3.1.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.9.0",
+    "jest-cli": "^24.9.0",
+    "kremling": "^2.0.1",
+    "kremling-loader": "^1.0.2",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
+    "query-string": "^6.9.0",
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
+    "rxjs": "^6.5.3",
+    "single-spa-react": "^2.10.4",
+    "style-loader": "^1.0.1",
+    "systemjs-webpack-interop": "^1.1.2",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-config-single-spa-react": "^1.0.3",
+    "webpack-dev-server": "^3.9.0",
+    "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  }
+}
