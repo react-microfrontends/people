@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import queryString from "query-string";
-import { find } from "lodash";
 import { getPeople } from "../utils/api.js";
 import styles from "./people-page.krem.css";
 import PeopleList from "../people-list/people-list.component.js";
@@ -10,7 +9,7 @@ import { useCss } from "kremling";
 const initialState = {
   pageNum: 1,
   nextPage: true,
-  loadingPeople: false,
+  loadingPeople: true,
   selectedPerson: undefined,
   people: []
 };
@@ -22,7 +21,7 @@ export default function PeoplePage(props) {
   const scope = useCss(styles);
 
   React.useEffect(() => {
-    if (state.nextPage) {
+    if (nextPage && loadingPeople) {
       dispatch({ type: "loadingPeople" });
 
       const subscription = getPeople(pageNum).subscribe(
@@ -36,7 +35,7 @@ export default function PeoplePage(props) {
 
       return () => subscription.unsubscribe();
     }
-  }, [state.pageNum, state.nextPage, state.people, state.selectedPerson]);
+  }, [pageNum, nextPage, loadingPeople]);
 
   React.useEffect(() => {
     const search = props.location.search;
@@ -48,7 +47,7 @@ export default function PeoplePage(props) {
         parsed &&
         parsed.selected !== state.selectedPerson.id)
     ) {
-      const person = find(state.people, p => p.id === parsed.selected);
+      const person = state.people.find(p => p.id === parsed.selected);
       if (person) {
         dispatch({ type: "selectPerson", person });
       }
@@ -56,7 +55,7 @@ export default function PeoplePage(props) {
   }, [props.location.search]);
 
   return (
-    <div className="peoplePage">
+    <div className="peoplePage" {...scope}>
       <div className="peoplePageContents">
         <div className="listWrapper">
           {nextPage ? (
@@ -104,8 +103,19 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         people: state.people.concat(action.results.results),
-        nextPage: Boolean(action.results.nextPage),
+        nextPage: Boolean(action.results.next),
         loadingPeople: false
+      };
+    case "selectPerson":
+      return {
+        ...state,
+        selectedPerson: action.person
+      };
+    case "fetchMore":
+      return {
+        ...state,
+        loadingPeople: true,
+        pageNum: state.pageNum + 1
       };
     default:
       throw Error(`Unknown action type '${action.type}'`);

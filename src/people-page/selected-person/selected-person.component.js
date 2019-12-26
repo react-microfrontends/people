@@ -4,58 +4,55 @@ import styles from "./selected-person.krem.css";
 import Homeworld from "./homeworld.component.js";
 import Films from "../../films/films.component.js";
 
-export default class SelectedPerson extends React.Component {
-  render() {
-    const { selectedPerson } = this.props;
-    return (
-      <Scoped css={styles}>
-        <div className="selectedPerson">
-          {selectedPerson !== undefined ? (
-            <div>
-              <div className="personName">
-                <div className="personAttribute">
-                  <div className="attributeTitle">Name</div>
-                  <div>{selectedPerson.name}</div>
-                </div>
-              </div>
+export default function SelectedPerson({ selectedPerson }) {
+  return (
+    <Scoped css={styles}>
+      <div className="selectedPerson">
+        {selectedPerson !== undefined ? (
+          <div>
+            <div className="personName">
               <div className="personAttribute">
-                <div className="attributeTitle">height</div>
-                <div>{this.formatHeight(selectedPerson.height)}</div>
-              </div>
-              <div className="personAttribute">
-                <div className="attributeTitle">Mass</div>
-                <div>{selectedPerson.mass}</div>
-              </div>
-              <div className="personAttribute">
-                <div className="attributeTitle">Hair color</div>
-                <div>{selectedPerson.hair_color}</div>
-              </div>
-              <div className="personAttribute">
-                <div className="attributeTitle">Gender</div>
-                <div>{selectedPerson.gender}</div>
-              </div>
-              <div className="personAttribute">
-                <div className="attributeTitle">Birth Year</div>
-                <div>{selectedPerson.birth_year}</div>
-              </div>
-              <div className="personAttribute">
-                <div className="attributeTitle">Homeworld</div>
-                <Homeworld homeworld={selectedPerson.homeworld} />
-              </div>
-              <div className="personAttribute">
-                <div className="attributeTitle">Films</div>
-                <Films films={selectedPerson.films} />
+                <div className="attributeTitle">Name</div>
+                <div>{selectedPerson.name}</div>
               </div>
             </div>
-          ) : (
-            <div>No one selected</div>
-          )}
-        </div>
-      </Scoped>
-    );
-  }
+            <div className="personAttribute">
+              <div className="attributeTitle">height</div>
+              <div>{formatHeight(selectedPerson.height)}</div>
+            </div>
+            <div className="personAttribute">
+              <div className="attributeTitle">Mass</div>
+              <div>{selectedPerson.mass}</div>
+            </div>
+            <div className="personAttribute">
+              <div className="attributeTitle">Hair color</div>
+              <div>{selectedPerson.hair_color}</div>
+            </div>
+            <div className="personAttribute">
+              <div className="attributeTitle">Gender</div>
+              <div>{selectedPerson.gender}</div>
+            </div>
+            <div className="personAttribute">
+              <div className="attributeTitle">Birth Year</div>
+              <div>{selectedPerson.birth_year}</div>
+            </div>
+            <div className="personAttribute">
+              <div className="attributeTitle">Homeworld</div>
+              <Homeworld homeworld={selectedPerson.homeworld} />
+            </div>
+            <div className="personAttribute">
+              <div className="attributeTitle">Films</div>
+              <Films films={selectedPerson.films} />
+            </div>
+          </div>
+        ) : (
+          <div>No one selected</div>
+        )}
+      </div>
+    </Scoped>
+  );
 
-  formatHeight = heightInCm => {
+  function formatHeight(heightInCm) {
     return `${heightInCm}cm (${heightInCm * 0.0328084}ft)`;
-  };
+  }
 }

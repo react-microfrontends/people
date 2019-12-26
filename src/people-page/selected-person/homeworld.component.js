@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { getPlanet } from "../../utils/api.js";
 import { of } from "rxjs";
 import { flatMap, tap } from "rxjs/operators";
@@ -9,22 +9,15 @@ export default function Homeworld(props) {
   const [error, setError] = React.useState(false);
 
   React.useEffect(() => {
-    const subscription = of(props.homeworld)
-      .pipe(
-        tap(() => {
-          setHomeworld(null);
-        }),
-        flatMap(homeworldUrl => {
-          return getPlanet(homeworldUrl.match(/[0-9]+/));
-        })
-      )
-      .subscribe(
-        homeworld => setHomeworld({ homeworld }),
-        err => {
-          console.error(err);
-          setError(err);
-        }
-      );
+    setHomeworld(null);
+    const planetNumber = props.homeworld.match(/[0-9]+/);
+    const subscription = getPlanet(planetNumber).subscribe(
+      setHomeworld,
+      err => {
+        console.error(err);
+        setError(err);
+      }
+    );
 
     return () => {
       subscription.unsubscribe();
