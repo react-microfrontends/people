@@ -1,31 +1,33 @@
 import React, { Fragment } from "react";
-import { Scoped } from "kremling";
 import { getPeople } from "../utils/api.js";
-import styles from "./people-list.krem.css";
 import { Link, useRouteMatch } from "react-router-dom";
 
 export default function PeopleList({ people, loadingPeople, selectPerson }) {
   const match = useRouteMatch();
   return (
-    <Scoped css={styles}>
-      <div className="peopleList">
-        <Fragment>
-          {people.map((person, index) => {
-            return (
-              <Link
-                key={person.name}
-                className="person"
-                to={`${match.path}?selected=${window.encodeURIComponent(
-                  person.id
-                )}`}
-              >
-                {person.name}
-              </Link>
-            );
-          })}
-          {loadingPeople && <div>Loading ...</div>}
-        </Fragment>
-      </div>
-    </Scoped>
+    <div>
+      <Fragment>
+        {people.map((person, index) => {
+          let borderClass = "border-b";
+          if (index === 0) {
+            borderClass = "border-t border-b";
+          } else if (index + 1 === people.length) {
+            borderClass = "";
+          }
+          return (
+            <Link
+              key={person.name}
+              className={`h-12 flex items-center ${borderClass} border-white cursor-pointer no-underline`}
+              to={`${match.path}?selected=${window.encodeURIComponent(
+                person.id
+              )}`}
+            >
+              {person.name}
+            </Link>
+          );
+        })}
+        {loadingPeople && <div>Loading ...</div>}
+      </Fragment>
+    </div>
   );
 }

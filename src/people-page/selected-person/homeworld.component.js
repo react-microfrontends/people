@@ -29,7 +29,7 @@ export default function Homeworld(props) {
       {error && <div>Error Loading</div>}
       {homeworld === undefined && !error && <div>... Loading</div>}
       {homeworld && (
-        <Link className="brand-link" to={`/planets/${homeworld.id}`}>
+        <Link className="text-info" to={`/planets/${homeworld.id}`}>
           {homeworld.name}
         </Link>
       )}
