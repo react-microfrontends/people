@@ -1,15 +1,12 @@
 import React, { Fragment } from "react";
-import { useCss } from "kremling";
 import { from, of, forkJoin } from "rxjs";
 import { tap, mergeMap, switchMap, mergeAll, map } from "rxjs/operators";
-import styles from "./films.krem.css";
 import { getFilm } from "../utils/api.js";
 import Film from "./film.component.js";
 
 export default function Films(props) {
   const [films, setFilms] = React.useState([]);
   const [error, setError] = React.useState(false);
-  const scope = useCss(styles);
 
   React.useEffect(() => {
     setFilms([]);
@@ -27,7 +24,7 @@ export default function Films(props) {
   }, [props.films]);
 
   return (
-    <div className="films" {...scope}>
+    <div className="flex flex-wrap">
       {error && <div>Error</div>}
       {films.length !== props.films.length && !error && <div>... Loading</div>}
       {films.length === props.films.length && !error && (

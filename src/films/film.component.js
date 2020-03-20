@@ -10,31 +10,30 @@ export default class Film extends React.Component {
     const { film } = this.props;
     return (
       <div
-        className="film"
+        className="w-48 h-64 flex m-2 align-center justify-center relative"
         onMouseEnter={this.mouseOn}
         onMouseLeave={this.mouseOut}
-        tabIndex={0}
-        role="button"
       >
         <img
-          className="filmPoster"
+          className="p-1"
+          style={{ maxWidth: "100%", maxHeight: "100%" }}
           src={imageMap[film.episode_id]}
           alt={film.title}
         />
         {this.state.showOverlay && (
-          <div className="filmOverlay">
-            <div>
-              <div>
+          <div className="absolute flex items-center h-full w-full bg-overlay text-black rounded">
+            <div className="w-full px-4">
+              <div className="text-center border-b border-black">
                 <div>Directed By</div>
-                <div>{film.director}</div>
+                <div className="font-bold">{film.director}</div>
               </div>
-              <div>
+              <div className="text-center border-b border-black">
                 <div>Released on</div>
-                <div>{film.release_date}</div>
+                <div className="font-bold">{film.release_date}</div>
               </div>
-              <div>
+              <div className="text-center">
                 <div>Produced by</div>
-                <div>{film.producer}</div>
+                <div className="font-bold">{film.producer}</div>
               </div>
             </div>
           </div>

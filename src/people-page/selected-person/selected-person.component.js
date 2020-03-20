@@ -43,7 +43,7 @@ export default function SelectedPerson({ selectedPerson }) {
           <PersonAttribute>
             <PersonAttribute.Title>Homeworld</PersonAttribute.Title>
             <PersonAttribute.Value>
-              {selectedPerson.homeworld}
+              <Homeworld homeworld={selectedPerson.homeworld} />
             </PersonAttribute.Value>
           </PersonAttribute>
           <PersonAttribute>
