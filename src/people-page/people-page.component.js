@@ -52,7 +52,7 @@ export default function PeoplePage(props) {
         dispatch({ type: "selectPerson", person });
       }
     }
-  }, [props.location.search]);
+  }, [props.location.search, state.selectedPerson, state.people]);
 
   return (
     <div className="peoplePage" {...scope}>
@@ -60,7 +60,11 @@ export default function PeoplePage(props) {
         <div className="listWrapper">
           {nextPage ? (
             <button
-              className="brand-button margin-bottom-16"
+              className={`mb-8 ${
+                !nextPage || loadingPeople
+                  ? "opacity-50 bg-secondary"
+                  : "bg-warning"
+              } font-bold py-2 px-4 rounded`}
               onClick={fetchMore}
               disabled={!nextPage || loadingPeople}
             >
