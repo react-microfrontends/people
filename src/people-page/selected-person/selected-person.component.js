@@ -1,55 +1,62 @@
 import React, { Fragment } from "react";
-import { Scoped } from "kremling";
-import styles from "./selected-person.krem.css";
 import Homeworld from "./homeworld.component.js";
 import Films from "../../films/films.component.js";
+import PersonAttribute from "./person-attribute.component.js";
 
 export default function SelectedPerson({ selectedPerson }) {
   return (
-    <Scoped css={styles}>
-      <div className="selectedPerson">
-        {selectedPerson !== undefined ? (
-          <div>
-            <div className="personName">
-              <div className="personAttribute">
-                <div className="attributeTitle">Name</div>
-                <div>{selectedPerson.name}</div>
-              </div>
-            </div>
-            <div className="personAttribute">
-              <div className="attributeTitle">height</div>
-              <div>{formatHeight(selectedPerson.height)}</div>
-            </div>
-            <div className="personAttribute">
-              <div className="attributeTitle">Mass</div>
-              <div>{selectedPerson.mass}</div>
-            </div>
-            <div className="personAttribute">
-              <div className="attributeTitle">Hair color</div>
-              <div>{selectedPerson.hair_color}</div>
-            </div>
-            <div className="personAttribute">
-              <div className="attributeTitle">Gender</div>
-              <div>{selectedPerson.gender}</div>
-            </div>
-            <div className="personAttribute">
-              <div className="attributeTitle">Birth Year</div>
-              <div>{selectedPerson.birth_year}</div>
-            </div>
-            <div className="personAttribute">
-              <div className="attributeTitle">Homeworld</div>
-              <Homeworld homeworld={selectedPerson.homeworld} />
-            </div>
-            <div className="personAttribute">
-              <div className="attributeTitle">Films</div>
+    <div className="selectedPerson">
+      {selectedPerson !== undefined ? (
+        <div>
+          <PersonAttribute>
+            <PersonAttribute.Title>Name</PersonAttribute.Title>
+            <PersonAttribute.Value>{selectedPerson.name}</PersonAttribute.Value>
+          </PersonAttribute>
+          <PersonAttribute>
+            <PersonAttribute.Title>Height</PersonAttribute.Title>
+            <PersonAttribute.Value>
+              {formatHeight(selectedPerson.height)}
+            </PersonAttribute.Value>
+          </PersonAttribute>
+          <PersonAttribute>
+            <PersonAttribute.Title>Mass</PersonAttribute.Title>
+            <PersonAttribute.Value>{selectedPerson.mass}</PersonAttribute.Value>
+          </PersonAttribute>
+          <PersonAttribute>
+            <PersonAttribute.Title>Hair color</PersonAttribute.Title>
+            <PersonAttribute.Value>
+              {selectedPerson.hair_color}
+            </PersonAttribute.Value>
+          </PersonAttribute>
+          <PersonAttribute>
+            <PersonAttribute.Title>Gender</PersonAttribute.Title>
+            <PersonAttribute.Value>
+              {selectedPerson.gender}
+            </PersonAttribute.Value>
+          </PersonAttribute>
+          <PersonAttribute>
+            <PersonAttribute.Title>Birth year</PersonAttribute.Title>
+            <PersonAttribute.Value>
+              {selectedPerson.birth_year}
+            </PersonAttribute.Value>
+          </PersonAttribute>
+          <PersonAttribute>
+            <PersonAttribute.Title>Homeworld</PersonAttribute.Title>
+            <PersonAttribute.Value>
+              {selectedPerson.homeworld}
+            </PersonAttribute.Value>
+          </PersonAttribute>
+          <PersonAttribute>
+            <PersonAttribute.Title>Films</PersonAttribute.Title>
+            <PersonAttribute.Value>
               <Films films={selectedPerson.films} />
-            </div>
-          </div>
-        ) : (
-          <div>No one selected</div>
-        )}
-      </div>
-    </Scoped>
+            </PersonAttribute.Value>
+          </PersonAttribute>
+        </div>
+      ) : (
+        <div>No one selected</div>
+      )}
+    </div>
   );
 
   function formatHeight(heightInCm) {
