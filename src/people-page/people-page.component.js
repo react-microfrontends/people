@@ -1,10 +1,8 @@
 import React, { Fragment } from "react";
 import queryString from "query-string";
 import { getPeople } from "../utils/api.js";
-import styles from "./people-page.krem.css";
 import PeopleList from "../people-list/people-list.component.js";
 import SelectedPerson from "./selected-person/selected-person.component.js";
-import { useCss } from "kremling";
 
 const initialState = {
   pageNum: 1,
@@ -18,7 +16,6 @@ export default function PeoplePage(props) {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   const { nextPage, loadingPeople, people, selectedPerson, pageNum } = state;
-  const scope = useCss(styles);
 
   React.useEffect(() => {
     if (nextPage && loadingPeople) {
@@ -55,9 +52,9 @@ export default function PeoplePage(props) {
   }, [props.location.search, state.selectedPerson, state.people]);
 
   return (
-    <div className="peoplePage" {...scope}>
-      <div className="peoplePageContents">
-        <div className="listWrapper">
+    <div>
+      <div className="flex">
+        <div className="p-6 w-1/3">
           {nextPage ? (
             <button
               className={`mb-8 ${
@@ -81,8 +78,8 @@ export default function PeoplePage(props) {
             />
           )}
         </div>
-        <div className="selectedWrapper">
-          <div className="selectedPerson">
+        <div className="w-2/3 p-6 border-l-2 border-white">
+          <div>
             <SelectedPerson selectedPerson={selectedPerson} />
           </div>
         </div>
