@@ -13,9 +13,9 @@ export default class Root extends React.Component {
 
   render() {
     return this.state.hasError ? (
-      <div>Error</div>
+      <div className="mt-16">Error Loading people application</div>
     ) : (
-      <div className="m-t-navBarHeight">
+      <div className="mt-16">
         <BrowserRouter>
           <Route path="/people" component={PeoplePage} />
         </BrowserRouter>
