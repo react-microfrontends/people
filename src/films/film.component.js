@@ -15,8 +15,7 @@ export default class Film extends React.Component {
         onMouseLeave={this.mouseOut}
       >
         <img
-          className="p-1"
-          style={{ maxWidth: "100%", maxHeight: "100%" }}
+          className="p-1 object-contain"
           src={imageMap[film.episode_id]}
           alt={film.title}
         />
