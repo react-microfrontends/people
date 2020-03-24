@@ -3,6 +3,7 @@ import queryString from "query-string";
 import { getPeople } from "../utils/api.js";
 import PeopleList from "../people-list/people-list.component.js";
 import SelectedPerson from "./selected-person/selected-person.component.js";
+import { Button } from "@react-mf/styleguide";
 
 const initialState = {
   pageNum: 1,
@@ -56,17 +57,13 @@ export default function PeoplePage(props) {
       <div className="flex">
         <div className="p-6 w-1/3">
           {nextPage ? (
-            <button
-              className={`mb-8 ${
-                !nextPage || loadingPeople
-                  ? "opacity-50 bg-secondary"
-                  : "bg-warning"
-              } font-bold py-2 px-4 rounded`}
+            <Button
+              loading={loadingPeople}
               onClick={fetchMore}
               disabled={!nextPage || loadingPeople}
             >
               Fetch More people
-            </button>
+            </Button>
           ) : null}
           {loadingPeople && people.length === 0 ? (
             <div>Loading ...</div>
