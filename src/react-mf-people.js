@@ -17,9 +17,7 @@ export const mount = lifecycles.mount;
 export const unmount = lifecycles.unmount;
 
 export function getFilmsComponent() {
-  return Promise.resolve().then(() =>
-    import(
-      /* webpackChunkName: "films-component" */ "./films/films.component.js"
-    )
+  return import(
+    /* webpackChunkName: "films-component" */ "./films/films.component.js"
   );
 }
