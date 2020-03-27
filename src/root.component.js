@@ -17,7 +17,10 @@ export default class Root extends React.Component {
     ) : (
       <div className="mt-16">
         <BrowserRouter>
-          <Route path="/people" component={PeoplePage} />
+          <Switch>
+            <Route path="/people/:personId" component={PeoplePage} />
+            <Route path="/people" component={PeoplePage} />
+          </Switch>
         </BrowserRouter>
       </div>
     );
