@@ -14,6 +14,9 @@ const initialState = {
 };
 
 export default function PeoplePage(props) {
+  const { match } = props;
+  const { params = {} } = match;
+  const { personId } = params;
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   const { nextPage, loadingPeople, people, selectedPerson, pageNum } = state;
@@ -36,21 +39,16 @@ export default function PeoplePage(props) {
   }, [pageNum, nextPage, loadingPeople]);
 
   React.useEffect(() => {
-    const search = props.location.search;
-    const parsed = queryString.parse(search);
-
     if (
-      (state.selectedPerson === undefined && parsed.selected !== undefined) ||
-      (state.selectedPerson &&
-        parsed &&
-        parsed.selected !== state.selectedPerson.id)
+      (state.selectedPerson === undefined && personId !== undefined) ||
+      (state.selectedPerson && personId !== state.selectedPerson.id)
     ) {
-      const person = state.people.find(p => p.id === parsed.selected);
+      const person = state.people.find(p => p.id === personId);
       if (person) {
         dispatch({ type: "selectPerson", person });
       }
     }
-  }, [props.location.search, state.selectedPerson, state.people]);
+  }, [state.people, state.selectedPerson, personId]);
 
   return (
     <div>
