@@ -7,7 +7,10 @@ import Root from "./root.component";
 const lifecycles = singleSpaReact({
   React,
   ReactDOM,
-  rootComponent: Root
+  rootComponent: Root,
+  errorBoundary() {
+    return <div>Error</div>;
+  }
 });
 
 export const bootstrap = lifecycles.bootstrap;
