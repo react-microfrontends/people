@@ -9,27 +9,11 @@ module.exports = webpackConfigEnv => {
     webpackConfigEnv
   });
 
-  return webpackMerge.smart(defaultConfig, {
-    module: {
-      rules: [
-        {
-          test: /\.krem.css$/,
-          exclude: [path.resolve(__dirname, "node_modules")],
-          use: [
-            {
-              loader: "kremling-loader",
-              options: {
-                namespace: "people",
-                postcss: {
-                  plugins: {
-                    autoprefixer: {}
-                  }
-                }
-              }
-            }
-          ]
-        }
-      ]
-    }
+  const rxjsExternals = {
+    externals: [/^rxjs\/?.*$/]
+  };
+
+  return webpackMerge.smart(defaultConfig, rxjsExternals, {
+    // customizations go here
   });
 };

@@ -1,10 +1,9 @@
 import React, { Fragment } from "react";
 import queryString from "query-string";
 import { getPeople } from "../utils/api.js";
-import styles from "./people-page.krem.css";
 import PeopleList from "../people-list/people-list.component.js";
 import SelectedPerson from "./selected-person/selected-person.component.js";
-import { useCss } from "kremling";
+import { Button } from "@react-mf/styleguide";
 
 const initialState = {
   pageNum: 1,
@@ -15,10 +14,12 @@ const initialState = {
 };
 
 export default function PeoplePage(props) {
+  const { match } = props;
+  const { params = {} } = match;
+  const { personId } = params;
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   const { nextPage, loadingPeople, people, selectedPerson, pageNum } = state;
-  const scope = useCss(styles);
 
   React.useEffect(() => {
     if (nextPage && loadingPeople) {
@@ -38,34 +39,29 @@ export default function PeoplePage(props) {
   }, [pageNum, nextPage, loadingPeople]);
 
   React.useEffect(() => {
-    const search = props.location.search;
-    const parsed = queryString.parse(search);
-
     if (
-      (state.selectedPerson === undefined && parsed.selected !== undefined) ||
-      (state.selectedPerson &&
-        parsed &&
-        parsed.selected !== state.selectedPerson.id)
+      (state.selectedPerson === undefined && personId !== undefined) ||
+      (state.selectedPerson && personId !== state.selectedPerson.id)
     ) {
-      const person = state.people.find(p => p.id === parsed.selected);
+      const person = state.people.find(p => p.id === personId);
       if (person) {
         dispatch({ type: "selectPerson", person });
       }
     }
-  }, [props.location.search]);
+  }, [state.people, state.selectedPerson, personId]);
 
   return (
-    <div className="peoplePage" {...scope}>
-      <div className="peoplePageContents">
-        <div className="listWrapper">
+    <div>
+      <div className="flex">
+        <div className="p-6 w-1/3">
           {nextPage ? (
-            <button
-              className="brand-button margin-bottom-16"
+            <Button
+              loading={loadingPeople}
               onClick={fetchMore}
               disabled={!nextPage || loadingPeople}
             >
               Fetch More people
-            </button>
+            </Button>
           ) : null}
           {loadingPeople && people.length === 0 ? (
             <div>Loading ...</div>
@@ -77,8 +73,8 @@ export default function PeoplePage(props) {
             />
           )}
         </div>
-        <div className="selectedWrapper">
-          <div className="selectedPerson">
+        <div className="w-2/3 p-6 border-l-2 border-white">
+          <div>
             <SelectedPerson selectedPerson={selectedPerson} />
           </div>
         </div>
