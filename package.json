@@ -42,7 +42,7 @@
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
     "rxjs": "^6.5.3",
-    "single-spa-react": "^2.10.4",
+    "single-spa-react": "^2.14.0",
     "style-loader": "^1.0.1",
     "systemjs-webpack-interop": "^1.1.2",
     "webpack": "^4.41.2",

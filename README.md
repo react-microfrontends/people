@@ -41,7 +41,7 @@ Go to https://localhost:9001/react-mf-people.js and verify that you are able to 
 Now, go to https://react.microfrontends.app. In the browser console, run the following:
 
 ```js
-localStorage.setItem('devtools', true);
+localStorage.setItem("devtools", true);
 ```
 
 Refresh the page. Click on the tan / beige rectangle:

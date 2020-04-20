@@ -6,6 +6,9 @@ import singleSpaReact from "single-spa-react";
 const lifecycles = singleSpaReact({
   React,
   ReactDOM,
+  errorBoundary() {
+    return <div>Error</div>;
+  },
   loadRootComponent: () =>
     import(
       /* webpackChunkName: "people-root-component" */ "./root.component.js"
