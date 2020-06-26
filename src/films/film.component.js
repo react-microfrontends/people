@@ -3,7 +3,7 @@ import { imageMap } from "./film.helpers.js";
 
 export default class Film extends React.Component {
   state = {
-    showOverlay: false
+    showOverlay: false,
   };
 
   render() {

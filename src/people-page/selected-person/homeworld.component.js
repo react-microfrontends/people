@@ -13,7 +13,7 @@ export default function Homeworld(props) {
     const planetNumber = props.homeworld.match(/[0-9]+/);
     const subscription = getPlanet(planetNumber).subscribe(
       setHomeworld,
-      err => {
+      (err) => {
         console.error(err);
         setError(err);
       }

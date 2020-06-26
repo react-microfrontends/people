@@ -10,7 +10,7 @@ const initialState = {
   nextPage: true,
   loadingPeople: true,
   selectedPerson: undefined,
-  people: []
+  people: [],
 };
 
 export default function PeoplePage(props) {
@@ -26,10 +26,10 @@ export default function PeoplePage(props) {
       dispatch({ type: "loadingPeople" });
 
       const subscription = getPeople(pageNum).subscribe(
-        results => {
+        (results) => {
           dispatch({ type: "newPeople", results });
         },
-        err => {
+        (err) => {
           console.log("err", err); // eslint-disable-line
         }
       );
@@ -43,7 +43,7 @@ export default function PeoplePage(props) {
       (state.selectedPerson === undefined && personId !== undefined) ||
       (state.selectedPerson && personId !== state.selectedPerson.id)
     ) {
-      const person = state.people.find(p => p.id === personId);
+      const person = state.people.find((p) => p.id === personId);
       if (person) {
         dispatch({ type: "selectPerson", person });
       }
@@ -100,18 +100,18 @@ function reducer(state = initialState, action) {
         ...state,
         people: state.people.concat(action.results.results),
         nextPage: Boolean(action.results.next),
-        loadingPeople: false
+        loadingPeople: false,
       };
     case "selectPerson":
       return {
         ...state,
-        selectedPerson: action.person
+        selectedPerson: action.person,
       };
     case "fetchMore":
       return {
         ...state,
         loadingPeople: true,
-        pageNum: state.pageNum + 1
+        pageNum: state.pageNum + 1,
       };
     default:
       throw Error(`Unknown action type '${action.type}'`);

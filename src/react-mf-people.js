@@ -12,7 +12,7 @@ const lifecycles = singleSpaReact({
   loadRootComponent: () =>
     import(
       /* webpackChunkName: "people-root-component" */ "./root.component.js"
-    ).then(mod => mod.default)
+    ).then((mod) => mod.default),
 });
 
 export const bootstrap = lifecycles.bootstrap;

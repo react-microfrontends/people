@@ -12,7 +12,7 @@ export default function Films(props) {
     setFilms([]);
 
     const subscription = forkJoin(
-      props.films.map(film => {
+      props.films.map((film) => {
         const filmNumber = film.match(/[0-9]+/);
         return getFilm(filmNumber);
       })
@@ -29,7 +29,7 @@ export default function Films(props) {
       {films.length !== props.films.length && !error && <div>... Loading</div>}
       {films.length === props.films.length && !error && (
         <Fragment>
-          {films.map(film => {
+          {films.map((film) => {
             return <Film key={film.episode_id} film={film} />;
           })}
         </Fragment>
