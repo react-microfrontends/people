@@ -45,7 +45,7 @@
     "react-router-dom": "^5.2.0",
     "rxjs": "^6.5.5",
     "single-spa-react": "^3.0.0",
-    "standalone-single-spa-webpack-plugin": "^1.0.0",
+    "standalone-single-spa-webpack-plugin": "^1.0.1",
     "style-loader": "^1.2.1",
     "systemjs-webpack-interop": "^2.1.1",
     "webpack": "^4.43.0",
@@ -56,6 +56,7 @@
   },
   "dependencies": {
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "webpack-config-single-spa": "file:../create-single-spa/packages/webpack-config-single-spa"
   }
 }
