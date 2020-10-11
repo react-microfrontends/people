@@ -1,6 +1,7 @@
 {
   "scripts": {
     "start": "webpack-dev-server",
+    "start:standalone": "webpack-dev-server --env.standalone",
     "build": "webpack --mode=production",
     "analyze": "webpack --mode=production --env.analyze=true",
     "lint": "eslint src",
@@ -44,6 +45,7 @@
     "react-router-dom": "^5.2.0",
     "rxjs": "^6.5.5",
     "single-spa-react": "^3.0.0",
+    "standalone-single-spa-webpack-plugin": "^1.0.0",
     "style-loader": "^1.2.1",
     "systemjs-webpack-interop": "^2.1.1",
     "webpack": "^4.43.0",
