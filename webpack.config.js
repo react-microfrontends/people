@@ -18,6 +18,7 @@ module.exports = (webpackConfigEnv = {}) => {
     plugins: [
       new HtmlWebpackPlugin(),
       new StandaloneSingleSpaPlugin({
+        HtmlWebpackPlugin,
         appOrParcelName: "@react-mf/people",
         importMapUrl: new URL(
           "https://react.microfrontends.app/importmap.json"
