@@ -7707,15 +7707,6 @@ stack-utils@^2.0.2:
   dependencies:
     escape-string-regexp "^2.0.0"
 
-standalone-single-spa-webpack-plugin@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/standalone-single-spa-webpack-plugin/-/standalone-single-spa-webpack-plugin-1.0.0.tgz#1a520f9e96cc229fe4aed9fc4ea857c8b4e5f86e"
-  integrity sha512-w+glulEMP9HDHYYiNuYJHtZdEansBAl0Lstg4pVv5MlZBnnSYiALOxfZaTAJWKrJuhxcRjrIPGxByGpJvwHO4g==
-  dependencies:
-    safe-require "^1.0.4"
-  optionalDependencies:
-    html-webpack-plugin "^4.5.0"
-
 standalone-single-spa-webpack-plugin@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/standalone-single-spa-webpack-plugin/-/standalone-single-spa-webpack-plugin-1.0.1.tgz#4c614ce7a03921ceab9470367fac24e303037f90"
@@ -8526,14 +8517,14 @@ webpack-config-single-spa@^1.10.0:
     unused-files-webpack-plugin "^3.4.0"
     webpack-bundle-analyzer "^3.6.0"
 
-"webpack-config-single-spa@file:../create-single-spa/packages/webpack-config-single-spa":
+webpack-config-single-spa@^1.12.0:
   version "1.12.0"
+  resolved "https://registry.yarnpkg.com/webpack-config-single-spa/-/webpack-config-single-spa-1.12.0.tgz#367f7618be2772bbe3cdde22c3142577c19dcbf6"
+  integrity sha512-BO1nI7LqmHQ/oDYR11AEmFssHjFijt2O1UQO0c4QVr/w9fuVDvPo0Qei7WrfexxrudReQbURk5v/UEGAP306aA==
   dependencies:
     babel-loader "^8.1.0"
     clean-webpack-plugin "^3.0.0"
     css-loader "^3.5.3"
-    html-webpack-plugin "^4.5.0"
-    standalone-single-spa-webpack-plugin "^1.0.0"
     style-loader "^1.2.1"
     unused-files-webpack-plugin "^3.4.0"
     webpack-bundle-analyzer "^3.6.0"
