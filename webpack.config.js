@@ -13,22 +13,10 @@ module.exports = (webpackConfigEnv = {}) => {
   const config = webpackMerge.smart(defaultConfig, {
     // customizations go here
     devServer: {
-      historyApiFallback: true,
+      client: {
+        port: 9000,
+      },
     },
-    plugins: [
-      new HtmlWebpackPlugin(),
-      new StandaloneSingleSpaPlugin({
-        HtmlWebpackPlugin,
-        appOrParcelName: "@react-mf/people",
-        importMapUrl: new URL(
-          "https://react.microfrontends.app/importmap.json"
-        ),
-        activeWhen: ["/people"],
-        isParcel: false,
-        disabled: !webpackConfigEnv.standalone,
-      }),
-    ],
-    externals: [/^rxjs\/?.*$/],
   });
 
   return config;
