@@ -3,3 +3,5 @@
 yarn.lock
 package-lock.json
 LICENSE
+coverage
+pnpm-lock.yaml
