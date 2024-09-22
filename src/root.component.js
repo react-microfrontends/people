@@ -1,12 +1,19 @@
 import React from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import PeoplePage from "./people-page/people-page.component.js";
 
+const router = createBrowserRouter([
+  {
+    path: "/people/:personId",
+    element: <PeoplePage />,
+  },
+  {
+    path: "/people",
+    element: <PeoplePage />,
+    exact: true,
+  },
+]);
+
 export default function Root(props) {
-  return (
-    <BrowserRouter>
-      <Route path="/people/:personId" component={PeoplePage} />
-      <Route path="/people" component={PeoplePage} exact />
-    </BrowserRouter>
-  );
+  return <RouterProvider router={router} />;
 }

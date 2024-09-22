@@ -15,7 +15,7 @@ export default function Films(props) {
       props.films.map((film) => {
         const filmNumber = film.match(/[0-9]+/);
         return getFilm(filmNumber);
-      })
+      }),
     ).subscribe(setFilms, setError);
 
     return () => {

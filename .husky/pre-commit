@@ -1,0 +1,1 @@
+pnpm exec pretty-quick --staged && pnpm exec concurrently yarn:test yarn:lint

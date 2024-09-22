@@ -16,7 +16,7 @@ export default function Homeworld(props) {
       (err) => {
         console.error(err);
         setError(err);
-      }
+      },
     );
 
     return () => {

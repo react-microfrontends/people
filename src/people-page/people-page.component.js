@@ -1,5 +1,5 @@
-import React, { Fragment } from "react";
-import queryString from "query-string";
+import React from "react";
+import { useParams } from "react-router-dom";
 import { getPeople } from "../utils/api.js";
 import PeopleList from "../people-list/people-list.component.js";
 import SelectedPerson from "./selected-person/selected-person.component.js";
@@ -14,9 +14,7 @@ const initialState = {
 };
 
 export default function PeoplePage(props) {
-  const { match } = props;
-  const { params = {} } = match;
-  const { personId } = params;
+  const { personId } = useParams();
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   const { nextPage, loadingPeople, people, selectedPerson, pageNum } = state;
@@ -31,7 +29,7 @@ export default function PeoplePage(props) {
         },
         (err) => {
           console.log("err", err); // eslint-disable-line
-        }
+        },
       );
 
       return () => subscription.unsubscribe();
