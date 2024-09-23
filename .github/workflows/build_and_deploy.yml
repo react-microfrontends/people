@@ -53,6 +53,9 @@ jobs:
         with:
           name: dist
 
+      - name: debug
+        run: pwd && find .
+
       - name: Authenticate with GCP
         uses: "google-github-actions/auth@v2"
         with:
