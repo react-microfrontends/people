@@ -61,6 +61,7 @@ jobs:
         with:
           project_id: neural-passkey-248222
           workload_identity_provider: "projects/654158993889/locations/global/workloadIdentityPools/github/providers/my-repo"
+          service_account: github-workload-identity-feder@neural-passkey-248222.iam.gserviceaccount.com
 
       - name: Upload Static Files to CDN
         uses: "google-github-actions/upload-cloud-storage@v2"
