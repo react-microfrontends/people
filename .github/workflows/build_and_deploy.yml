@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: "*"
 
+env:
+  GITHUB_RUN_ID: ${{ GITHUB_RUN_ID }}
+
 jobs:
   build_test:
     name: Build and Test
@@ -65,8 +68,6 @@ jobs:
 
       - name: Upload Static Files to CDN
         uses: "google-github-actions/upload-cloud-storage@v2"
-        env:
-          GITHUB_RUN_ID: ${{ GITHUB_RUN_ID }}
         with:
           path: .
           destination: react.microfrontends.app/people/$GITHUB_RUN_ID/
