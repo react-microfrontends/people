@@ -69,4 +69,4 @@ jobs:
           GITHUB_RUN_ID: ${{ env.GITHUB_RUN_ID }}
         with:
           path: .
-          destination: react.microfrontends.app/people/$GITHUB_RUN_ID/
+          destination: "react.microfrontends.app/people/$GITHUB_RUN_ID/"
