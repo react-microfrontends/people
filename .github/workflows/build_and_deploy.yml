@@ -64,15 +64,10 @@ jobs:
           workload_identity_provider: "projects/654158993889/locations/global/workloadIdentityPools/github/providers/my-repo"
           service_account: github-workload-identity-feder@neural-passkey-248222.iam.gserviceaccount.com
 
-      - name: Test
-        env:
-          GITHUB_RUN_ID: ${{ env.GITHUB_RUN_ID }}
-        run: echo $GITHUB_RUN_ID
-
       - name: Upload Static Files to CDN
         uses: "google-github-actions/upload-cloud-storage@v2"
         env:
           GITHUB_RUN_ID: ${{ env.GITHUB_RUN_ID }}
         with:
           path: .
-          destination: react.microfrontends.app/people/${{ env.GITHUB_RUN_ID }}/
+          destination: react.microfrontends.app/people/${{ env.GITHUB_RUN_ID }}/test
