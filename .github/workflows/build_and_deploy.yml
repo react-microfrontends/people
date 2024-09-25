@@ -59,6 +59,7 @@ jobs:
       - name: Authenticate with GCP
         uses: "google-github-actions/auth@v2"
         with:
+          project_id: neural-passkey-248222
           workload_identity_provider: "projects/654158993889/locations/global/workloadIdentityPools/github/providers/my-repo"
 
       - name: Upload Static Files to CDN
