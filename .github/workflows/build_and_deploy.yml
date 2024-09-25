@@ -6,9 +6,6 @@ on:
   pull_request:
     branches: "*"
 
-env:
-  GITHUB_RUN_ID: ${{ env.GITHUB_RUN_ID }}
-
 jobs:
   build_test:
     name: Build and Test
@@ -50,6 +47,9 @@ jobs:
     permissions:
       contents: "read"
       id-token: "write"
+    env:
+      GITHUB_RUN_ID: ${{ env.GITHUB_RUN_ID }}
+
     steps:
       - name: Download build artifact
         uses: actions/download-artifact@v4
