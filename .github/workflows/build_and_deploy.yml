@@ -47,8 +47,6 @@ jobs:
     permissions:
       contents: "read"
       id-token: "write"
-    env:
-      GITHUB_RUN_ID: ${{ env.GITHUB_RUN_ID }}
 
     steps:
       - name: Download build artifact
@@ -67,6 +65,8 @@ jobs:
           service_account: github-workload-identity-feder@neural-passkey-248222.iam.gserviceaccount.com
 
       - name: Test
+        env:
+          GITHUB_RUN_ID: ${{ env.GITHUB_RUN_ID }}
         run: echo $GITHUB_RUN_ID
 
       - name: Upload Static Files to CDN
