@@ -68,4 +68,4 @@ jobs:
         uses: "google-github-actions/upload-cloud-storage@v2"
         with:
           path: .
-          destination: react.microfrontends.app/people/${{ github.env.GITHUB_RUN_ID }}/test
+          destination: react.microfrontends.app/people/${{ github.action }}/test
