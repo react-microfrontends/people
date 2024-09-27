@@ -54,9 +54,6 @@ jobs:
         with:
           name: dist
 
-      - name: debug
-        run: pwd && find .
-
       - name: Authenticate with GCP
         uses: "google-github-actions/auth@v2"
         with:
@@ -69,3 +66,6 @@ jobs:
         with:
           path: .
           destination: react.microfrontends.app/people/${{ github.run_id }}
+
+      - name: Update Import Map
+        run: curl -u ${{ secrets.DEPLOYER_USERNAME }}:${{ secrets.DEPLOYER_PASSWORD }} -d '{ "service":"@react-mf/people","url":"https://react.microfrontends.app/people/${{ github.run_id }}/react-mf-people.js" }' -X PATCH ${{ secrets.DEPLOYER_HOST }}/services\?env=react -H "Accept:application/json" -H "Content-Type:application/json" --fail --insecure -i
