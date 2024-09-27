@@ -65,7 +65,7 @@ jobs:
         uses: "google-github-actions/upload-cloud-storage@v2"
         with:
           path: .
-          destination: react.microfrontends.app/people/${{ github.run_id }}
+          destination: react.microfrontends.app/${{ github.event.repository.name }}/${{ github.run_id }}
 
       - name: Update Import Map
         run: curl -u ${{ secrets.DEPLOYER_USERNAME }}:${{ secrets.DEPLOYER_PASSWORD }} -d '{ "service":"@react-mf/${{ github.event.repository.name }}","url":"https://react.microfrontends.app/${{ github.event.repository.name }}/${{ github.run_id }}/react-mf-people.js" }' -X PATCH ${{ secrets.DEPLOYER_HOST }}/services\?env=react -H "Accept:application/json" -H "Content-Type:application/json" --fail --insecure -i
