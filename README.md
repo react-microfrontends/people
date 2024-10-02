@@ -2,8 +2,6 @@
 
 The microfrontend for People in the star wars universe
 
-[![CircleCI](https://circleci.com/gh/react-microfrontends/people.svg?style=svg)](https://circleci.com/gh/react-microfrontends/people)
-
 ## What is this?
 
 This is an example microfrontend repo demonstrating how to use [single-spa](https://single-spa.js.org). You can see the code running at https://react.microfrontends.app.
