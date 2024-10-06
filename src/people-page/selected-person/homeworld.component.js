@@ -1,7 +1,5 @@
 import React from "react";
 import { getPlanet } from "../../utils/api.js";
-import { of } from "rxjs";
-import { flatMap, tap } from "rxjs/operators";
 import { Link } from "react-router-dom";
 
 export default function Homeworld(props) {
