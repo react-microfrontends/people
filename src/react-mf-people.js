@@ -1,6 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import singleSpaReact from "single-spa-react";
+import * as rxjs from "rxjs";
+
+// eslint-disable-next-line no-console
+console.log("rxjs", rxjs);
 
 const lifecycles = singleSpaReact({
   React,
