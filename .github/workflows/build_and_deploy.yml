@@ -69,7 +69,7 @@ jobs:
 
       - id: integrity
         name: Generate integrity
-        run: echo "$(sha256sum react-mf-${{ github.event.repository.name }}.js)" >> GITHUB_OUTPUT
+        run: echo "$(sha256sum react-mf-${{ github.event.repository.name }}.js)"
 
       - name: Update Import Map
         uses: single-spa/action-deploy-to-import-map-deployer@v1
