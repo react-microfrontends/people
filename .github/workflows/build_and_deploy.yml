@@ -75,3 +75,4 @@ jobs:
           password: ${{ secrets.DEPLOYER_PASSWORD }}
           service-name: "@react-mf/${{ github.event.repository.name }}"
           service-url: "https://react.microfrontends.app/${{ github.event.repository.name }}/${{ github.run_id }}/react-mf-${{ github.event.repository.name }}.js"
+          service-integrity: sha256sum react-mf-${{ github.event.repository.name }}.js
