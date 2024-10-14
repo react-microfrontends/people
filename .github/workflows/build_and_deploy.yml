@@ -67,6 +67,10 @@ jobs:
           path: .
           destination: react.microfrontends.app/${{ github.event.repository.name }}/${{ github.run_id }}
 
+      - id: integrity
+        name: Generate integrity
+        run: echo "$(sha256sum react-mf-${{ github.event.repository.name }}.js)" >> GITHUB_OUTPUT
+
       - name: Update Import Map
         uses: single-spa/action-deploy-to-import-map-deployer@v1
         with:
@@ -75,4 +79,4 @@ jobs:
           password: ${{ secrets.DEPLOYER_PASSWORD }}
           service-name: "@react-mf/${{ github.event.repository.name }}"
           service-url: "https://react.microfrontends.app/${{ github.event.repository.name }}/${{ github.run_id }}/react-mf-${{ github.event.repository.name }}.js"
-          service-integrity: sha256sum react-mf-${{ github.event.repository.name }}.js
+          service-integrity: ${{ join(steps.integrity.outputs.*, '\n') }}
