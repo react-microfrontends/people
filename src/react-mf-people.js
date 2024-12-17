@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import ReactDOMClient from "react-dom/client";
 import singleSpaReact from "single-spa-react";
 import * as rxjs from "rxjs";
@@ -9,7 +8,6 @@ console.log("rxjs", rxjs);
 
 const lifecycles = singleSpaReact({
   React,
-  ReactDOM,
   ReactDOMClient,
   errorBoundary() {
     return <div>Error</div>;
