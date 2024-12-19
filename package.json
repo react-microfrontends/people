@@ -2,7 +2,7 @@
   "scripts": {
     "start": "webpack serve",
     "start:standalone": "webpack serve --env standalone",
-    "build": "webpack --mode production",
+    "build": "webpack --mode=production",
     "analyze": "webpack --mode=production --env analyze",
     "lint": "eslint src",
     "test": "jest --passWithNoTests",
