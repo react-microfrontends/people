@@ -43,7 +43,7 @@
     "rxjs": "^7.8.1",
     "single-spa-react": "^6.0.2",
     "standalone-single-spa-webpack-plugin": "^5.0.0",
-    "webpack": "^5.15.0",
+    "webpack": "^5.104.1",
     "webpack-cli": "^5.1.4",
     "webpack-config-single-spa-react": "^7.0.0",
     "webpack-dev-server": "^5.1.0",
